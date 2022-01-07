@@ -1,5 +1,9 @@
+
 tasks:
   - init: |
       yarn install
     command: |
       yarn start
+vscode:
+  extensions:
+    - jpoissonnier.vscode-styled-components

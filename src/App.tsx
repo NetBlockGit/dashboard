@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
-
+import SearchBar from "./Component/SearchBar";
 function App() {
-  return <div>Hello World</div>;
+  return (
+      <SearchBar queryProcess= "Search"/>
+  );
 }
 
 export default App;

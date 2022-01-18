@@ -7,3 +7,4 @@ tasks:
 vscode:
   extensions:
     - jpoissonnier.vscode-styled-components
+    - esbenp.prettier-vscode

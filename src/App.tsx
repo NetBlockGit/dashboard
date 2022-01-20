@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-
+import SearchBar from "./Component/SearchBar";
 function App() {
-  return <div>Hello World</div>;
+  return <SearchBar placeholder="Search" />;
 }
 
 export default App;

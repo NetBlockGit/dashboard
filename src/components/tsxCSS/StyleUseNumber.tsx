@@ -2,7 +2,7 @@
 // css
 // css for '145' number on dashboard
 
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const StyleUserNumber = styled.div`
     font-family: 'Varela Round', sans-serif;

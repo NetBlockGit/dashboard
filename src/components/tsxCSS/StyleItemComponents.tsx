@@ -1,5 +1,5 @@
 import react from "react";
-import styled from "styled-components"
+import styled from "styled-components";
 
 
 export const StyleItemComponents = styled.div`

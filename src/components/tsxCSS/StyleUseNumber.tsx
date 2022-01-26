@@ -1,3 +1,7 @@
+// 1
+// css
+// css for '145' number on dashboard
+
 import styled from "styled-components"
 
 export const StyleUserNumber = styled.div`
@@ -7,13 +11,15 @@ export const StyleUserNumber = styled.div`
     list-style: none;
     text-decoration: none;
 
+
+
 .content{
     font-size: 30px;
-    margin-left: 250px;
+    margin-left: 20px;
 }
 
 .ctitle{
-    padding-top: 13%;
+    /* padding-top: 13%; */
     padding-left: 1%;
     margin-bottom: 2%;
 }

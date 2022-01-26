@@ -1,5 +1,8 @@
+// 1
+// 145 number on dashboard
+
 import React from "react";
-import { StyleUserNumber } from "./StyleUseNumber";
+import { StyleUserNumber } from "../tsxCSS/StyleUseNumber";
 
 
 export default function Uses_number(props: { queryProcess: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) {

@@ -1,6 +1,6 @@
-import React from "react";
+// import React from "react";
 import "./App.css";
-import Uses_numbers from "./components/tsxHTML_JS/Uses_number";
+// import Uses_numbers from "./components/tsxHTML_JS/Uses_number";
 import ItemComponents from "./components/tsxHTML_JS/ItemComponents";
 // import Uses_numbers from "./components/Uses_number";
 

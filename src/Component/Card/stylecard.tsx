@@ -1,14 +1,8 @@
 import styled from "styled-components";
 
-export const Style = styled.div`
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 450px;
-    background: #ebf5fc;
-  }
+type props = { color: string };
 
+const Style = styled.div<props>`
   .container {
     display: flex;
     justify-content: center;
@@ -39,7 +33,7 @@ export const Style = styled.div`
   .container .card .box .content {
     padding: 20px;
     border-radius: 15px;
-    background: linear-gradient(45deg, #b95ce4, #4f29cd);
+    background: ${(props) => props.color};
   }
   .container .card .box .content h2 {
     font-size: 25px;
@@ -51,3 +45,5 @@ export const Style = styled.div`
     color: #ebf5fcaf;
   }
 `;
+
+export default Style;

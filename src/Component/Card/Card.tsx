@@ -1,10 +1,11 @@
 import React from "react";
-import { Style } from "./stylecard";
-type props = { placeholder: string; place: string };
+import Style from "./stylecard";
+
+type props = { placeholder: string; place: string; color: string };
 
 export default function Card(p: props): React.ReactElement {
   return (
-    <Style>
+    <Style color={p.color}>
       <div className="container">
         <div className="card">
           <div className="box">

@@ -1,7 +1,15 @@
+image:
+  file: .gitpod.Dockerfile
 
 tasks:
   - init: |
       yarn install
+      mkdir -p generated/grpc
+      cd generated && svn checkout https://github.com/NetBlockGit/dns-server/trunk/protos && cd -
+      cd generated && protoc -I=. protos/blocker.proto \
+                --js_out=import_style=typescript:grpc \
+                --grpc-web_out=import_style=typescript,mode=grpcwebtext:grpc
+      rm -rf protos && cd -
     command: |
       yarn start
 vscode:

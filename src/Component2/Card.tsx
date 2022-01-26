@@ -2,7 +2,7 @@ import React from "react";
 import { Style } from "./stylecard";
 type props = { placeholder: string; place: string };
 
-export default function Card(p: props) {
+export default function Card(p: props): React.ReactElement {
   return (
     <Style>
       <div className="container">

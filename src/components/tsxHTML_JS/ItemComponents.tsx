@@ -1,7 +1,7 @@
 // 2
 // home and filter item component on dashboard 
 
-import React from "react";
+
 import { StyleItemComponents } from "../tsxCSS/StyleItemComponents";
 export default function homeIcon(props: {  mode: string , dataIcon:string }) {
     return (

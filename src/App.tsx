@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 import Card from "./Component/Card/Card";
-import SearchBar from "./Component/SearchBar";
+import SearchBar from "./Component/Search/SearchBar";
 import "./api/index";
 
 function App() {

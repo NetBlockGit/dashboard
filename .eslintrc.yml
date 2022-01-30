@@ -18,3 +18,9 @@ rules:
   linebreak-style:
     - error
     - unix
+overrides:
+  - files: 
+    - "*.js"
+    - "*.jsx"
+    rules:
+      "@typescript-eslint/...": "off"

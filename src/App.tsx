@@ -1,6 +1,10 @@
 import React from "react";
 import "./App.css";
+
 import Card from "./Component/Card/Card";
+import SearchBar from "./Component/SearchBar";
+import "./api/index";
+
 function App() {
   return (
     // <SearchBar placeholder="Search" />;

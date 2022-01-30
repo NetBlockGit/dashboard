@@ -1,7 +1,10 @@
+image:
+  file: .gitpod.Dockerfile
 
 tasks:
   - init: |
       yarn install
+      ./generate_protos.sh
     command: |
       yarn start
 vscode:

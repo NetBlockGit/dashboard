@@ -12,7 +12,10 @@ export default function SignIn() {
   const { setToken } = useAuth();
   const location = useLocation();
 
-  const from = (location.state as any)?.from?.pathname || "/";
+  type locationState = {
+    from:{pathname:string}
+  }
+  const from = (location.state as locationState)?.from?.pathname || "/";
   const signUsingMetamask = async () => {
     // TODO: handle if no wallet
     await window.ethereum.request({ method: "eth_requestAccounts" });

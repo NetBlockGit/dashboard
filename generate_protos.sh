@@ -16,5 +16,9 @@ protoc -I=. protos/getauthtoken/getauthtoken.proto \
                 --js_out=import_style=commonjs,binary:grpc \
                 --grpc-web_out=import_style=typescript,mode=grpcwebtext:grpc
 
+protoc -I=. protos/updateupstreamdns/updateupstreamdns.proto \
+                --js_out=import_style=commonjs,binary:grpc \
+                --grpc-web_out=import_style=typescript,mode=grpcwebtext:grpc
+
 rm -rf protos
 cd -

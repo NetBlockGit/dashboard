@@ -16,6 +16,7 @@ import * as grpcWeb from 'grpc-web';
 import * as protos_getauthtoken_getauthtoken_pb from '../protos/getauthtoken/getauthtoken_pb';
 import * as protos_getstats_getstats_pb from '../protos/getstats/getstats_pb';
 import * as protos_toggleblocker_toggleblocker_pb from '../protos/toggleblocker/toggleblocker_pb';
+import * as protos_updateupstreamdns_updateupstreamdns_pb from '../protos/updateupstreamdns/updateupstreamdns_pb';
 
 
 export class BlockerClient {
@@ -164,6 +165,49 @@ export class BlockerClient {
     request,
     metadata || {},
     this.methodInfoGetAuthToken);
+  }
+
+  methodInfoUpdateUpstreamDns = new grpcWeb.MethodDescriptor(
+    '/Blocker/UpdateUpstreamDns',
+    grpcWeb.MethodType.UNARY,
+    protos_updateupstreamdns_updateupstreamdns_pb.UpdateUpstreamDnsRequest,
+    protos_updateupstreamdns_updateupstreamdns_pb.UpdateUpstreamDnsResponse,
+    (request: protos_updateupstreamdns_updateupstreamdns_pb.UpdateUpstreamDnsRequest) => {
+      return request.serializeBinary();
+    },
+    protos_updateupstreamdns_updateupstreamdns_pb.UpdateUpstreamDnsResponse.deserializeBinary
+  );
+
+  updateUpstreamDns(
+    request: protos_updateupstreamdns_updateupstreamdns_pb.UpdateUpstreamDnsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<protos_updateupstreamdns_updateupstreamdns_pb.UpdateUpstreamDnsResponse>;
+
+  updateUpstreamDns(
+    request: protos_updateupstreamdns_updateupstreamdns_pb.UpdateUpstreamDnsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: protos_updateupstreamdns_updateupstreamdns_pb.UpdateUpstreamDnsResponse) => void): grpcWeb.ClientReadableStream<protos_updateupstreamdns_updateupstreamdns_pb.UpdateUpstreamDnsResponse>;
+
+  updateUpstreamDns(
+    request: protos_updateupstreamdns_updateupstreamdns_pb.UpdateUpstreamDnsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: protos_updateupstreamdns_updateupstreamdns_pb.UpdateUpstreamDnsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/Blocker/UpdateUpstreamDns',
+        request,
+        metadata || {},
+        this.methodInfoUpdateUpstreamDns,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/Blocker/UpdateUpstreamDns',
+    request,
+    metadata || {},
+    this.methodInfoUpdateUpstreamDns);
   }
 
 }

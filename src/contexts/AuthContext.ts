@@ -7,4 +7,4 @@ interface AuthContextType {
     removeToken: () => void;
 }
 
-export const AuthContext = React.createContext<AuthContextType>(null!);
+export const AuthContext = React.createContext<AuthContextType>({} as AuthContextType);

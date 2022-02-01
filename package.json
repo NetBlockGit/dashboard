@@ -47,10 +47,12 @@
     ]
   },
   "devDependencies": {
+    "@typechain/ethers-v5": "^9.0.0",
     "@types/styled-components": "^5.1.19",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "eslint": "^8.6.0",
-    "eslint-plugin-react": "^7.28.0"
+    "eslint-plugin-react": "^7.28.0",
+    "typechain": "^7.0.0"
   }
 }

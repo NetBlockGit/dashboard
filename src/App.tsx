@@ -6,6 +6,7 @@ import SignIn from "./pages/signin/SignIn";
 import { AuthProvider } from "./contexts/AuthProvider";
 import Home from "./pages/home/Home";
 import { RequireAuth } from "./guards/RequireAuth";
+import Filters from "./pages/filters/Filter";
 
 function App() {
   return (
@@ -18,6 +19,14 @@ function App() {
             element={
               <RequireAuth>
                 <Home />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/filters"
+            element={
+              <RequireAuth>
+                <Filters />
               </RequireAuth>
             }
           />

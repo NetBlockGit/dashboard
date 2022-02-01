@@ -39,6 +39,8 @@ function EnhancedCard(p: Props) {
       </div>
 
       <EnhancedInput
+        bg="#1db235"
+        pColor="#fffff"
         value={p.inputValue}
         onChange={p.handleInputChange}
         placeholder="upstream dns"

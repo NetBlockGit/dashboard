@@ -13,8 +13,8 @@ export default function SignIn() {
   const location = useLocation();
 
   type locationState = {
-    from:{pathname:string}
-  }
+    from: { pathname: string };
+  };
   const from = (location.state as locationState)?.from?.pathname || "/";
   const signUsingMetamask = async () => {
     // TODO: handle if no wallet
@@ -24,7 +24,7 @@ export default function SignIn() {
     const date = new Date();
     const message = `${date.getFullYear()}-${date.toLocaleDateString("en", {
       month: "short",
-    })}-${date.getDate()}`;
+    })}-${("0" + date.getDate()).slice(-2)}`;
     const sig = await signer.signMessage(message);
     const req = new GetAuthTokenRequest();
     req.setSignature(sig);
@@ -34,7 +34,8 @@ export default function SignIn() {
       setToken(res.getToken());
       navigate(from);
     } catch (error) {
-      console.log("failed to getAuthToken: %d", error);
+      console.log("failed to getAuthToken");
+      console.log(error);
     }
   };
   return (

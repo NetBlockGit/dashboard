@@ -63,7 +63,7 @@ const SwitchComponentStyled = styled.label`
 import React, { ChangeEventHandler } from "react";
 
 type Props = {
-  onSwitch: ChangeEventHandler;
+  onSwitch: ChangeEventHandler<HTMLInputElement>;
 };
 
 function SwitchComponent(p: Props) {

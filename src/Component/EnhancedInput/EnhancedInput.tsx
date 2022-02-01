@@ -13,7 +13,7 @@ const EnhancedInputStyled = styled.input`
 `;
 
 type Props = {
-  value: any;
+  value: string;
   onChange: ChangeEventHandler;
   placeholder: string;
 };

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import blockerservice, { getAuthMetaData } from "../../api";
 import EnhacedCard from "../../Component/EnhancedCard/EnhancedCard";
 import StatsCard from "../../Component/StatsCard/StatsCard";
 import {
-  GetStatsResponse,
   GetStatsRequest,
   Stats,
 } from "../../generated/grpc/protos/getstats/getstats_pb";
@@ -36,8 +35,8 @@ function Home() {
     blockerservice.toggleBlocker(new ToggleBlockerRequest(), getAuthMetaData());
   };
 
-  const handleInputChange = (e: any) => {
-    setUpstreamDns(e.target.value);
+  const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
+    setUpstreamDns(e.currentTarget.value);
   };
   const updateUpstreamDns = () => {
     const req = new UpdateUpstreamDnsRequest();

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import React, { ChangeEventHandler, useState } from "react";
+import React, { ChangeEventHandler, FormEvent, useState } from "react";
 import EnhancedInput from "../EnhancedInput/EnhancedInput";
 import SwitchComponent from "../SwitchComponent/SwitchComponent";
 
@@ -18,24 +18,24 @@ const EnhancedCardStyled = styled.div`
     justify-content: space-between;
   }
 `;
-//TODO
 type Props = {
-  todo?: string;
   onSwitch: () => void;
-  inputValue: any;
-  handleInputChange: ChangeEventHandler;
+  inputValue: string;
+  handleInputChange: ChangeEventHandler<HTMLInputElement>;
   onSumit: () => void;
 };
 
 function EnhancedCard(p: Props) {
-  const [inputValue, setinputValue] = useState("");
-
   const [isActive, setIsActive] = useState(false);
+  const handleOnSwitch = (e: FormEvent<HTMLInputElement>) => {
+    setIsActive(e.currentTarget.checked);
+    p.onSwitch();
+  };
   return (
     <EnhancedCardStyled>
       <div className="label-switch">
         <h2>{isActive ? "Active" : "InActive"}</h2>
-        <SwitchComponent onSwitch={p.onSwitch} />
+        <SwitchComponent onSwitch={handleOnSwitch} />
       </div>
 
       <EnhancedInput

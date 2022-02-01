@@ -13,7 +13,8 @@ const signUsingMetamask = async () => {
   const date = new Date();
   const message = `${date.getFullYear()}-${date.toLocaleDateString("en", {
     month: "short",
-  })}-${date.getDate()}`;
+  })}-${("0"+date.getDate()).slice(-2)}
+`;
   const sig = await signer.signMessage(message);
   const req = new GetAuthTokenRequest();
   req.setSignature(sig);

@@ -4,9 +4,10 @@ image:
 tasks:
   - init: |
       yarn install
-      ./generate_protos.sh
     command: |
+      ./generate_protos.sh
       yarn start
+
 vscode:
   extensions:
     - jpoissonnier.vscode-styled-components

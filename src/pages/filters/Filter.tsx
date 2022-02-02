@@ -1,18 +1,23 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { ethers } from "ethers";
 import { Blocker__factory } from "../../generated/smartcontract/types/ethers-contracts";
 import StyledFilter from "./StyledFilter";
 import ItemCard from "../../Component/ItemCard/ItemCard";
 import EnhancedInput from "../../Component/EnhancedInput/EnhancedInput";
+import { Web3Provider } from "@ethersproject/providers";
 function Filters() {
+  const provider = useRef<Web3Provider>();
   const [hostlists, setHostLists] = useState<string[]>([]);
   const [newHost, setNewHost] = useState<string>("");
   const fetchHostName = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum, 80001);
+    provider.current = new ethers.providers.Web3Provider(
+      window.ethereum,
+      80001
+    );
 
     const Blocklist = Blocker__factory.connect(
       process.env.REACT_APP_CONTRACT_ADDRESS ?? "",
-      provider
+      provider.current
     );
     setHostLists(await Blocklist.getHostList());
   };

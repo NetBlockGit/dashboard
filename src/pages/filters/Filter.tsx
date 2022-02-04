@@ -10,10 +10,11 @@ function Filters() {
   const [hostlists, setHostLists] = useState<string[]>([]);
   const [newHost, setNewHost] = useState<string>("");
   const fetchHostName = async () => {
-    provider.current = new ethers.providers.Web3Provider(
-      window.ethereum,
-      80001
-    );
+    if (!provider.current)
+      provider.current = new ethers.providers.Web3Provider(
+        window.ethereum,
+        80001
+      );
 
     const Blocklist = Blocker__factory.connect(
       process.env.REACT_APP_CONTRACT_ADDRESS ?? "",
@@ -23,14 +24,18 @@ function Filters() {
   };
 
   const addHostName = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum, 80001);
+    if (!provider.current)
+      provider.current = new ethers.providers.Web3Provider(
+        window.ethereum,
+        80001
+      );
 
     let Blocklist = Blocker__factory.connect(
       process.env.REACT_APP_CONTRACT_ADDRESS ?? "",
-      provider
+      provider.current
     );
 
-    Blocklist = Blocklist.connect(provider.getSigner());
+    Blocklist = Blocklist.connect(provider.current.getSigner());
     try {
       await Blocklist.addHostName(newHost);
       setHostLists([...hostlists, newHost]);
@@ -41,17 +46,18 @@ function Filters() {
 
   const deleteHostName = (index: number) => {
     return async () => {
-      const provider = new ethers.providers.Web3Provider(
-        window.ethereum,
-        80001
-      );
+      if (!provider.current)
+        provider.current = new ethers.providers.Web3Provider(
+          window.ethereum,
+          80001
+        );
 
       let Blocklist = Blocker__factory.connect(
         process.env.REACT_APP_CONTRACT_ADDRESS ?? "",
-        provider
+        provider.current
       );
 
-      Blocklist = Blocklist.connect(provider.getSigner());
+      Blocklist = Blocklist.connect(provider.current.getSigner());
       try {
         await Blocklist.removeHostList(index);
         setHostLists(hostlists.filter((e, i) => i != index));

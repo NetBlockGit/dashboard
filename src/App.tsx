@@ -7,6 +7,7 @@ import { AuthProvider } from "./contexts/AuthProvider";
 import Home from "./pages/home/Home";
 import { RequireAuth } from "./guards/RequireAuth";
 import Filters from "./pages/filters/Filter";
+import Admin from "./pages/admin/Admin";
 
 function App() {
   return (
@@ -27,6 +28,14 @@ function App() {
             element={
               <RequireAuth>
                 <Filters />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <RequireAuth>
+                <Admin />
               </RequireAuth>
             }
           />

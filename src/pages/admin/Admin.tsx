@@ -1,16 +1,8 @@
 import { ethers } from "ethers";
 import { Web3Provider } from "@ethersproject/providers";
-import React, {
-  ChangeEvent,
-  ChangeEventHandler,
-  SyntheticEvent,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import StyledAdmin from "./StyledAdmin";
 import { Blocker__factory } from "../../generated/smartcontract/types/ethers-contracts";
-import { ToggleBlockerRequest } from "../../generated/grpc/protos/toggleblocker/toggleblocker_pb";
 import EnhancedInput from "../../Component/EnhancedInput/EnhancedInput";
 const Admin = () => {
   const provider = useRef<Web3Provider>();

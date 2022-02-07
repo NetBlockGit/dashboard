@@ -4,7 +4,6 @@ import { RequireAuth } from "../../guards/RequireAuth";
 import Filters from "../filters/Filter";
 import Admin from "../admin/Admin";
 import { Routes, Route, Link } from "react-router-dom";
-import SignIn from "../signin/SignIn";
 import StyledDash from "./StyledDash";
 
 const Dash = ()=>{
@@ -47,7 +46,6 @@ const Dash = ()=>{
         </RequireAuth>
       }
     />
-    <Route path="/signin" element={<SignIn />} />
     </Routes>
         </div>
    </StyledDash>

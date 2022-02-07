@@ -3,7 +3,7 @@ import Home from "../home/Home";
 import { RequireAuth } from "../../guards/RequireAuth";
 import Filters from "../filters/Filter";
 import Admin from "../admin/Admin";
-import { Routes, Route, Navigate, Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import SignIn from "../signin/SignIn";
 import StyledDash from "./StyledDash";
 

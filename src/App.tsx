@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./api/index";
-import SignIn from "./pages/signin/SignIn";
 import { AuthProvider } from "./contexts/AuthProvider";
 import Dash from "./pages/dash/Dash";
 

@@ -12,6 +12,7 @@ const EnhancedCardStyled = styled.div`
   flex-direction: column;
   padding: 10px;
   box-shadow: -15px 16px 18px 7px rgba(0, 200, 44, 0.6);
+  margin:4px;
   .label-switch {
     display: flex;
     align-items: center;

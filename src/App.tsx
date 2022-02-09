@@ -2,45 +2,22 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./api/index";
-import SignIn from "./pages/signin/SignIn";
 import { AuthProvider } from "./contexts/AuthProvider";
-import Home from "./pages/home/Home";
-import { RequireAuth } from "./guards/RequireAuth";
-import Filters from "./pages/filters/Filter";
-import Admin from "./pages/admin/Admin";
+import Dash from "./pages/dash/Dash";
+import SignIn from "./pages/signin/SignIn";
+
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to="/home" replace />} />
-          <Route
-            path="/home"
-            element={
-              <RequireAuth>
-                <Home />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/filters"
-            element={
-              <RequireAuth>
-                <Filters />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              <RequireAuth>
-                <Admin />
-              </RequireAuth>
-            }
-          />
-          <Route path="/signin" element={<SignIn />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Navigate to="/dash" replace />} />
+        <Route path="/dash" element={<Navigate to="/dash/home" replace />} />
+        <Route path="/dash/*" element={<Dash/>} />
+    <Route path="/signin" element={<SignIn />} />
+      </Routes>
+
       </BrowserRouter>
     </AuthProvider>
   );

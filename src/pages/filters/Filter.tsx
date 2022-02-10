@@ -9,6 +9,10 @@ function Filters() {
   const provider = useRef<Web3Provider>();
   const [hostlists, setHostLists] = useState<string[]>([]);
   const [newHost, setNewHost] = useState<string>("");
+
+  useEffect(() => {
+    fetchHostName();
+  }, []);
   const fetchHostName = async () => {
     if (!provider.current)
       provider.current = new ethers.providers.Web3Provider(
@@ -66,10 +70,6 @@ function Filters() {
       }
     };
   };
-  useEffect(() => {
-    window.ethereum.request({ method: "eth_requestAccounts" });
-    fetchHostName();
-  }, []);
 
   const handleOnChage = (e: ChangeEvent<HTMLInputElement>) => {
     setNewHost(e.currentTarget.value);

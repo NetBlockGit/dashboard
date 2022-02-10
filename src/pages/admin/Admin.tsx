@@ -8,7 +8,6 @@ const Admin = () => {
   const provider = useRef<Web3Provider>();
   const [walletAddr, setWalletAddr] = useState("");
   useEffect(() => {
-    window.ethereum.request({ method: "eth_requestAccounts" });
     provider.current = new ethers.providers.Web3Provider(
       window.ethereum,
       80001

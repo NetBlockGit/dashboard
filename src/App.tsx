@@ -5,6 +5,7 @@ import "./api/index";
 import { AuthProvider } from "./contexts/AuthProvider";
 import Dash from "./pages/dash/Dash";
 import SignIn from "./pages/signin/SignIn";
+import EnhancedLoader from "./Component/EnhancedLoader/EnhancedLoader";
 
 function App() {
   useEffect(() => {
@@ -12,6 +13,7 @@ function App() {
   }, []);
   return (
     <AuthProvider>
+      <EnhancedLoader />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/dash" replace />} />

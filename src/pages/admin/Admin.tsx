@@ -4,6 +4,7 @@ import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import StyledAdmin from "./StyledAdmin";
 import { Blocker__factory } from "../../generated/smartcontract/types/ethers-contracts";
 import EnhancedInput from "../../Component/EnhancedInput/EnhancedInput";
+import LoaderSub from "../../subscribtions/loader/loader";
 const Admin = () => {
   const provider = useRef<Web3Provider>();
   const [walletAddr, setWalletAddr] = useState("");
@@ -29,7 +30,9 @@ const Admin = () => {
       provider.current
     );
     Blocklist = Blocklist.connect(provider.current.getSigner());
+    LoaderSub.next(true);
     await Blocklist.authorizeUser(walletAddr);
+    LoaderSub.next(false);
   };
 
   const removeWallet = async () => {
@@ -44,7 +47,9 @@ const Admin = () => {
       provider.current
     );
     Blocklist = Blocklist.connect(provider.current.getSigner());
+    LoaderSub.next(true);
     await Blocklist.unAuthorizeUser(walletAddr);
+    LoaderSub.next(false);
   };
   return (
     <StyledAdmin>

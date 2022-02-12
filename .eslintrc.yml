@@ -18,6 +18,8 @@ rules:
   linebreak-style:
     - error
     - unix
+  "@typescript-eslint/ban-ts-comment": "off"
+  "@typescript-eslint/no-explicit-any": "off"
 overrides:
   - files: 
     - "*.js"

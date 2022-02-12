@@ -5,6 +5,7 @@ import StyledFilter from "./StyledFilter";
 import ItemCard from "../../Component/ItemCard/ItemCard";
 import EnhancedInput from "../../Component/EnhancedInput/EnhancedInput";
 import { Web3Provider } from "@ethersproject/providers";
+import LoaderSub from "../../subscribtions/loader/loader";
 function Filters() {
   const provider = useRef<Web3Provider>();
   const [hostlists, setHostLists] = useState<string[]>([]);
@@ -38,12 +39,14 @@ function Filters() {
       process.env.REACT_APP_CONTRACT_ADDRESS ?? "",
       provider.current
     );
-
     Blocklist = Blocklist.connect(provider.current.getSigner());
     try {
+      LoaderSub.next(true);
       await Blocklist.addHostName(newHost);
+      LoaderSub.next(false);
       setHostLists([...hostlists, newHost]);
     } catch (error) {
+      LoaderSub.next(false);
       console.log(error);
     }
   };
@@ -63,10 +66,13 @@ function Filters() {
 
       Blocklist = Blocklist.connect(provider.current.getSigner());
       try {
+        LoaderSub.next(true);
         await Blocklist.removeHostList(index);
-        setHostLists(hostlists.filter((e, i) => i != index));
+        LoaderSub.next(false);
+        setHostLists(hostlists.filter((_, i) => i != index));
       } catch (error) {
         console.log(error);
+        LoaderSub.next(false);
       }
     };
   };

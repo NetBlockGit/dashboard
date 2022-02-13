@@ -7,6 +7,7 @@ import blockerservice from "../../api";
 import { GetAuthTokenRequest } from "../../generated/grpc/protos/getauthtoken/getauthtoken_pb";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate, useLocation } from "react-router-dom";
+import LoaderSub from "../../subscribtions/loader/loader";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -19,22 +20,29 @@ export default function SignIn() {
   const from = (location.state as locationState)?.from?.pathname || "/";
   const signUsingMetamask = async () => {
     // TODO: handle if no wallet
+    LoaderSub.next("Connecting");
     await window.ethereum.request({ method: "eth_requestAccounts" });
+    LoaderSub.next(false);
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const date = new Date();
     const message = `${date.getFullYear()}-${date.toLocaleDateString("en", {
       month: "short",
     })}-${("0" + date.getDate()).slice(-2)}`;
+    LoaderSub.next("Waiting for signature");
     const sig = await signer.signMessage(message);
+    LoaderSub.next(false);
     const req = new GetAuthTokenRequest();
     req.setSignature(sig);
     req.setWalletaddress(await signer.getAddress());
     try {
+      LoaderSub.next(true);
       const res = await blockerservice.getAuthToken(req, null);
+      LoaderSub.next(false);
       setToken(res.getToken());
       navigate(from);
     } catch (error) {
+      LoaderSub.next(false);
       console.log("failed to getAuthToken");
       console.log(error);
     }

@@ -2,6 +2,7 @@ import React, { FormEvent, useEffect, useState } from "react";
 import blockerservice, { getAuthMetaData } from "../../api";
 import EnhacedCard from "../../Component/EnhancedCard/EnhancedCard";
 import StatsCard from "../../Component/StatsCard/StatsCard";
+import { GetServerInfoRequest } from "../../generated/grpc/protos/getserverinfo/getserverinfo_pb";
 import {
   GetStatsRequest,
   Stats,
@@ -14,6 +15,7 @@ function Home() {
   const [upstreamDns, setUpstreamDns] = useState("");
   const [processedQueries, setProcessedQueries] = useState<Stats[]>([]);
   const [blockedQueries, setBlockedQueries] = useState<Stats[]>([]);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     blockerservice
@@ -21,6 +23,12 @@ function Home() {
       .then((res) => {
         setProcessedQueries(res.getStatsList().filter((s) => !s.getBlocked()));
         setBlockedQueries(res.getStatsList().filter((s) => s.getBlocked()));
+      });
+
+    blockerservice
+      .getServerInfo(new GetServerInfoRequest(), getAuthMetaData())
+      .then((res) => {
+        setIsActive(res.getIsactive());
       });
   }, []);
 
@@ -36,8 +44,16 @@ function Home() {
       .slice(blockedQueries.length - 2, blockedQueries.length)
       .join(" ");
   };
-  const toggleBlocker = () => {
-    blockerservice.toggleBlocker(new ToggleBlockerRequest(), getAuthMetaData());
+  const toggleBlocker = async () => {
+    await blockerservice.toggleBlocker(
+      new ToggleBlockerRequest(),
+      getAuthMetaData()
+    );
+    blockerservice
+      .getServerInfo(new GetServerInfoRequest(), getAuthMetaData())
+      .then((res) => {
+        setIsActive(res.getIsactive());
+      });
   };
 
   const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
@@ -69,6 +85,7 @@ function Home() {
       </div>
 
       <EnhacedCard
+        switchStatus={isActive}
         onSwitch={toggleBlocker}
         inputValue={upstreamDns}
         handleInputChange={handleInputChange}

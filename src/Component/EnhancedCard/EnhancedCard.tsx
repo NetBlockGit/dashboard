@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import React, { ChangeEventHandler, FormEvent, useState } from "react";
+import React, { ChangeEventHandler } from "react";
 import EnhancedInput from "../EnhancedInput/EnhancedInput";
 import SwitchComponent from "../SwitchComponent/SwitchComponent";
 
@@ -12,7 +12,7 @@ const EnhancedCardStyled = styled.div`
   flex-direction: column;
   padding: 10px;
   box-shadow: -15px 16px 18px 7px rgba(0, 200, 44, 0.6);
-  margin:4px;
+  margin: 4px;
   .label-switch {
     display: flex;
     align-items: center;
@@ -20,6 +20,7 @@ const EnhancedCardStyled = styled.div`
   }
 `;
 type Props = {
+  switchStatus: boolean;
   onSwitch: () => void;
   inputValue: string;
   handleInputChange: ChangeEventHandler<HTMLInputElement>;
@@ -27,16 +28,15 @@ type Props = {
 };
 
 function EnhancedCard(p: Props) {
-  const [isActive, setIsActive] = useState(false);
-  const handleOnSwitch = (e: FormEvent<HTMLInputElement>) => {
-    setIsActive(e.currentTarget.checked);
+  const handleOnSwitch = () => {
     p.onSwitch();
   };
+
   return (
     <EnhancedCardStyled>
       <div className="label-switch">
-        <h2>{isActive ? "Active" : "InActive"}</h2>
-        <SwitchComponent onSwitch={handleOnSwitch} />
+        <h2>{p.switchStatus ? "Active" : "InActive"}</h2>
+        <SwitchComponent isActive={p.switchStatus} onSwitch={handleOnSwitch} />
       </div>
 
       <EnhancedInput

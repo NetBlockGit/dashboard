@@ -3,16 +3,11 @@ import styled from "styled-components";
 const StyledSignIn = styled.div`
   .cards {
     display: flex;
+    justify-content: center;
   }
   .boxcontainer {
-    margin: AUTO;
-    margin-top: 2%;
-    margin-left: 2%;
-    position: absolute;
-    width: 210px;
-    height: 58px;
     border: none;
-    padding: 0px 15px;
+    padding: 20px 15px;
     border-radius: 10px;
     background-color: transparent;
     color: rgb(10, 10, 10);
@@ -20,14 +15,26 @@ const StyledSignIn = styled.div`
   }
   .Wallet {
     border: none;
+    padding-left: 5px;
     height: 100%;
     width: 100%;
-    padding: 0px 5px;
     border-radius: 150px;
-    font-size: 15px;
+    font-size: 22px;
     font-family: "Varela Round", sans-serif;
-    font-weight: 60;
+    font-weight: 60px;
   }
+  .padding {
+    text-align: center;
+  }
+  .padding1 {
+    text-align: center;
+  }
+  .padding2 {
+    padding-left: 5px;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default StyledSignIn;

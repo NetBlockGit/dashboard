@@ -49,7 +49,9 @@ export default function SignIn() {
   };
   return (
     <StyledSignIn>
-      <h1>Congratulations for taking first step, here are the rewards</h1>
+      <h1 className="padding1">
+        Congratulations for taking first step, here are the rewards
+      </h1>
       <div className="cards">
         <Card
           place="You control your blocklist, no one else can, not even pro hacker"
@@ -63,7 +65,7 @@ export default function SignIn() {
         />
       </div>
 
-      <h1>Connect using</h1>
+      <h1 className="padding">Connect using</h1>
 
       <div onClick={signUsingMetamask}>
         <Wallet placeholder="Wallet Connect" />

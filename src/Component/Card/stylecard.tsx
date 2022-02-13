@@ -13,7 +13,7 @@ const Style = styled.div<props>`
   .container .card {
     position: relative;
     width: 320px;
-    height: 440px;
+    height: 280px;
     border-radius: 15px;
     margin: 30px;
   }

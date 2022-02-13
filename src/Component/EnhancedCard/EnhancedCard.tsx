@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import React, { ChangeEventHandler, FormEvent, useState } from "react";
+import React, { ChangeEventHandler } from "react";
 import EnhancedInput from "../EnhancedInput/EnhancedInput";
 import SwitchComponent from "../SwitchComponent/SwitchComponent";
 
@@ -28,7 +28,7 @@ type Props = {
 };
 
 function EnhancedCard(p: Props) {
-  const handleOnSwitch = (e: FormEvent<HTMLInputElement>) => {
+  const handleOnSwitch = () => {
     p.onSwitch();
   };
 

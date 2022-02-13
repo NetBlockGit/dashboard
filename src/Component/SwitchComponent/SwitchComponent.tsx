@@ -64,12 +64,13 @@ import React, { ChangeEventHandler } from "react";
 
 type Props = {
   onSwitch: ChangeEventHandler<HTMLInputElement>;
+  isActive: boolean;
 };
 
 function SwitchComponent(p: Props) {
   return (
     <SwitchComponentStyled className="switch">
-      <input type="checkbox" onChange={p.onSwitch} />
+      <input checked={p.isActive} type="checkbox" onChange={p.onSwitch} />
       <span className="slider round"></span>
     </SwitchComponentStyled>
   );

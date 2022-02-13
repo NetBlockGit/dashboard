@@ -14,6 +14,7 @@
 import * as grpcWeb from 'grpc-web';
 
 import * as protos_getauthtoken_getauthtoken_pb from '../protos/getauthtoken/getauthtoken_pb';
+import * as protos_getserverinfo_getserverinfo_pb from '../protos/getserverinfo/getserverinfo_pb';
 import * as protos_getstats_getstats_pb from '../protos/getstats/getstats_pb';
 import * as protos_toggleblocker_toggleblocker_pb from '../protos/toggleblocker/toggleblocker_pb';
 import * as protos_updateupstreamdns_updateupstreamdns_pb from '../protos/updateupstreamdns/updateupstreamdns_pb';
@@ -208,6 +209,49 @@ export class BlockerClient {
     request,
     metadata || {},
     this.methodInfoUpdateUpstreamDns);
+  }
+
+  methodInfoGetServerInfo = new grpcWeb.MethodDescriptor(
+    '/Blocker/GetServerInfo',
+    grpcWeb.MethodType.UNARY,
+    protos_getserverinfo_getserverinfo_pb.GetServerInfoRequest,
+    protos_getserverinfo_getserverinfo_pb.GetServerInfoResponse,
+    (request: protos_getserverinfo_getserverinfo_pb.GetServerInfoRequest) => {
+      return request.serializeBinary();
+    },
+    protos_getserverinfo_getserverinfo_pb.GetServerInfoResponse.deserializeBinary
+  );
+
+  getServerInfo(
+    request: protos_getserverinfo_getserverinfo_pb.GetServerInfoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<protos_getserverinfo_getserverinfo_pb.GetServerInfoResponse>;
+
+  getServerInfo(
+    request: protos_getserverinfo_getserverinfo_pb.GetServerInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: protos_getserverinfo_getserverinfo_pb.GetServerInfoResponse) => void): grpcWeb.ClientReadableStream<protos_getserverinfo_getserverinfo_pb.GetServerInfoResponse>;
+
+  getServerInfo(
+    request: protos_getserverinfo_getserverinfo_pb.GetServerInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: protos_getserverinfo_getserverinfo_pb.GetServerInfoResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/Blocker/GetServerInfo',
+        request,
+        metadata || {},
+        this.methodInfoGetServerInfo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/Blocker/GetServerInfo',
+    request,
+    metadata || {},
+    this.methodInfoGetServerInfo);
   }
 
 }

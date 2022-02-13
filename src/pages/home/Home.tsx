@@ -25,11 +25,16 @@ function Home() {
   }, []);
 
   const getRecentVisitedText = () => {
-    return processedQueries.slice(0, 2).join(" ");
+    return processedQueries
+      .slice(processedQueries.length - 2, processedQueries.length)
+      .join(" ");
   };
 
   const getRecentBlockedText = () => {
-    return processedQueries.slice(0, 2).join(" ");
+    return blockedQueries
+      .map((e) => e.getHostname())
+      .slice(blockedQueries.length - 2, blockedQueries.length)
+      .join(" ");
   };
   const toggleBlocker = () => {
     blockerservice.toggleBlocker(new ToggleBlockerRequest(), getAuthMetaData());

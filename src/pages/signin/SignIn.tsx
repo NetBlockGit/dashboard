@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../../Component/Card/Card";
+import Wallet from "../../Component/Wallet/Wallet";
 import StyledSignIn from "./StyledSignIn";
 import { ethers } from "ethers";
 import blockerservice from "../../api";
@@ -55,7 +56,10 @@ export default function SignIn() {
       </div>
 
       <h1>Connect using</h1>
-      <button onClick={signUsingMetamask}>Meta mask</button>
+
+      <div onClick={signUsingMetamask}>
+        <Wallet placeholder="Wallet Connect" />
+      </div>
     </StyledSignIn>
   );
 }

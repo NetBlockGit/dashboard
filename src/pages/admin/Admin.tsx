@@ -30,7 +30,7 @@ const Admin = () => {
       provider.current
     );
     Blocklist = Blocklist.connect(provider.current.getSigner());
-    LoaderSub.next(true);
+    LoaderSub.next("Waiting for request");
     await Blocklist.authorizeUser(walletAddr);
     LoaderSub.next(false);
   };
@@ -47,7 +47,7 @@ const Admin = () => {
       provider.current
     );
     Blocklist = Blocklist.connect(provider.current.getSigner());
-    LoaderSub.next(true);
+    LoaderSub.next("Waiting for request");
     await Blocklist.unAuthorizeUser(walletAddr);
     LoaderSub.next(false);
   };

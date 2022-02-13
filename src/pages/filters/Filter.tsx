@@ -41,7 +41,7 @@ function Filters() {
     );
     Blocklist = Blocklist.connect(provider.current.getSigner());
     try {
-      LoaderSub.next(true);
+      LoaderSub.next("Waiting for request");
       await Blocklist.addHostName(newHost);
       LoaderSub.next(false);
       setHostLists([...hostlists, newHost]);
@@ -66,7 +66,7 @@ function Filters() {
 
       Blocklist = Blocklist.connect(provider.current.getSigner());
       try {
-        LoaderSub.next(true);
+        LoaderSub.next("Waiting for request");
         await Blocklist.removeHostList(index);
         LoaderSub.next(false);
         setHostLists(hostlists.filter((_, i) => i != index));

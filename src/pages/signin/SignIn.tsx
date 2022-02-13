@@ -19,7 +19,7 @@ export default function SignIn() {
   const from = (location.state as locationState)?.from?.pathname || "/";
   const signUsingMetamask = async () => {
     // TODO: handle if no wallet
-    LoaderSub.next(true);
+    LoaderSub.next("Connecting");
     await window.ethereum.request({ method: "eth_requestAccounts" });
     LoaderSub.next(false);
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -28,7 +28,7 @@ export default function SignIn() {
     const message = `${date.getFullYear()}-${date.toLocaleDateString("en", {
       month: "short",
     })}-${("0" + date.getDate()).slice(-2)}`;
-    LoaderSub.next(true);
+    LoaderSub.next("Waiting for signature");
     const sig = await signer.signMessage(message);
     LoaderSub.next(false);
     const req = new GetAuthTokenRequest();

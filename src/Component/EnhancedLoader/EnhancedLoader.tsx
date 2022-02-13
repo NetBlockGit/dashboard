@@ -53,15 +53,24 @@ const StyledEnhancedLoader = styled.div`
 
 const EnhancedLoader = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingHint, setLoadingHint] = useState("Loading");
   useEffect(() => {
     LoaderSub.subscribe((v) => {
-      setIsLoading(v);
+      if (typeof v == "string") {
+        setLoadingHint(v);
+        setIsLoading(true);
+      } else {
+        setIsLoading(v);
+        if (!v) {
+          setLoadingHint("Loading");
+        }
+      }
     });
   }, []);
   return (
     <StyledEnhancedLoader className={isLoading ? "is-loading" : ""}>
       <div className="loader" />
-      <p>Loading</p>
+      <p>{loadingHint}</p>
     </StyledEnhancedLoader>
   );
 };

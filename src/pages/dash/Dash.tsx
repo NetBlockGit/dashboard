@@ -5,49 +5,54 @@ import Filters from "../filters/Filter";
 import Admin from "../admin/Admin";
 import { Routes, Route, Link } from "react-router-dom";
 import StyledDash from "./StyledDash";
+import Home_ItemComponnt from "../subComponents/sidePanel /item_components/home/Home_ItemComponents";
+import Filter_ItemComponnt from "../subComponents/sidePanel /item_components/filter/Filter_ItemComponents";
+import Admin_ItemComponnt from "../subComponents/sidePanel /item_components/admin/Admin_ItemComponents";
 
-const Dash = ()=>{
-    
-    return <StyledDash>
-        <div className="left-panel">
-        <Link to="/dash/home">
-        <div className="item">Home</div>
-        </Link>
-        <Link to="/dash/filters">
-            <div className="item">Filters</div>
-        </Link>
-        <Link to="/dash/admin">
-            <div className="item">Admin</div>
-        </Link>
-        </div>
-        <div className="outlet">
-        <Routes>
-    <Route
-      path="/home"
-      element={
-        <RequireAuth>
-          <Home />
-        </RequireAuth>
-      }
-    />
-    <Route
-      path="/filters"
-      element={
-        <RequireAuth>
-          <Filters />
-        </RequireAuth>
-      }
-    />
-    <Route
-      path="/admin"
-      element={
-        <RequireAuth>
-          <Admin />
-        </RequireAuth>
-      }
-    />
-    </Routes>
-        </div>
-   </StyledDash>
+
+import SidePanelTemplet from "../subComponents/sidePanel /SidePanelTemplet";
+
+const Dash = () => {
+
+  return <StyledDash>
+    <div>
+      <SidePanelTemplet/>
+      
+        
+        
+      
+
+    </div>
+    <div className="outlet">
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/filters"
+          element={
+            <RequireAuth>
+              <Filters />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <RequireAuth>
+              <Admin />
+            </RequireAuth>
+          }
+        />
+
+        
+      </Routes>
+    </div>
+  </StyledDash>
 }
 export default Dash

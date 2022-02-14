@@ -7,6 +7,7 @@ height:100%;
     background: #0E0E20;
     color:white;
     margin-right:30px;
+    width: 250px;
     .item {
         color:white;
         margin:10px;

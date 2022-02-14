@@ -1,13 +1,6 @@
 import React from "react";
-// import Home from "/workspace/dashboard/src/pages/home/Home";
 import Style_ItemComponents from "../Style_ItemComponents";
-
-import Home from "/workspace/dashboard/src/pages/home/Home";
-import { RequireAuth } from "../../../../../guards/RequireAuth";
-import Filters from "../../../../filters/Filter";
-import Admin from "../../../../admin/Admin";
-import { Routes, Route, Link } from "react-router-dom";
-import StyledDash from "../../../../dash/StyledDash";
+import { Link } from "react-router-dom";
 
 const Admin_ItemComponnt = () =>  {
     return (

@@ -21,15 +21,6 @@ height:100%;
     margin-top: 15px;
     margin-left: 25px;
 }
-
-
-
-
-
-
-
-
-    
-    `
+ `
 
 export default Style_sidePanelTemplet;

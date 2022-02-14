@@ -1,13 +1,5 @@
 import React from "react";
 
-import Home from "../../home/Home";
-import { RequireAuth } from "../../../guards/RequireAuth";
-import Filters from "../../filters/Filter";
-import Admin from "../../admin/Admin";
-import { Routes, Route, Link } from "react-router-dom";
-import StyledDash from "../../dash/StyledDash";
-
-
 import Style_sidePanelTemplet from "./Style_sidePanelTemplet";
 import Home_ItemComponnt from "./item_components/home/Home_ItemComponents";
 import Filter_ItemComponnt from "./item_components/filter/Filter_ItemComponents";
@@ -22,40 +14,6 @@ const SidePanelTemplet = () => {
                 <Filter_ItemComponnt/>
                 <Admin_ItemComponnt/>
             </div>
-
-            {/* <div className="outlet"> */}
-      {/* <Routes>
-        <Route
-          path="/home"
-          element={
-            <RequireAuth>
-              <Home />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path="/filters"
-          element={
-            <RequireAuth>
-              <Filters />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <RequireAuth>
-              <Admin />
-            </RequireAuth>
-          }
-        />
-
-        
-      </Routes>
-    </div> */}
-            
-
-
         </Style_sidePanelTemplet>
     )
 }

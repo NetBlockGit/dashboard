@@ -7,14 +7,8 @@ export const Style_ItemComponents = styled.div`
     padding: 0;
     list-style: none;
     text-decoration: none;
-    /* background-color: #1f1f68; */
     
-
-/* .modecontainer{
-background-color: transparent;
-padding: 7px;
-
-} */
+    
 .home{
     color: #d8d1d1;
     font-size: 25px;
@@ -24,7 +18,7 @@ padding: 7px;
     border: none;
     margin-top: 7px;
     text-align: center;
-    /* padding: 10%; */
+    
 }
 
 .home:hover{
@@ -68,20 +62,14 @@ padding: 7px;
 }
 
 .pad{
-    /* position: absolute;
-    top: 22px;
-    left:88px; */
     padding-bottom: 3px;
     padding: 0px 180px 0px 0px;
     margin: 60px;
-    /* text-align: center; */
 }
 
 .top{
     margin-top: 10px 0px 0px 0px;
 }
-
-    
     `
 
 export default Style_ItemComponents;

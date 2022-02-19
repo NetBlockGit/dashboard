@@ -6,6 +6,7 @@ import ItemCard from "../../Component/ItemCard/ItemCard";
 import EnhancedInput from "../../Component/EnhancedInput/EnhancedInput";
 import { Web3Provider } from "@ethersproject/providers";
 import LoaderSub from "../../subscribtions/loader/loader";
+import EnhancedButton from "../../Component/EnhancedButton/EnhancedButton";
 function Filters() {
   const provider = useRef<Web3Provider>();
   const [hostlists, setHostLists] = useState<string[]>([]);
@@ -98,7 +99,7 @@ function Filters() {
         value={newHost}
         onChange={handleOnChage}
       />
-      <button onClick={addHostName}>Add</button>
+      <EnhancedButton onClick={addHostName}>Add</EnhancedButton>
     </StyledFilter>
   );
 }

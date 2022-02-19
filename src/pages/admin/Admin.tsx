@@ -5,6 +5,7 @@ import StyledAdmin from "./StyledAdmin";
 import { Blocker__factory } from "../../generated/smartcontract/types/ethers-contracts";
 import EnhancedInput from "../../Component/EnhancedInput/EnhancedInput";
 import LoaderSub from "../../subscribtions/loader/loader";
+import EnhancedButton from "../../Component/EnhancedButton/EnhancedButton";
 const Admin = () => {
   const provider = useRef<Web3Provider>();
   const [walletAddr, setWalletAddr] = useState("");
@@ -61,8 +62,10 @@ const Admin = () => {
         placeholder="Wallet Address"
         value={walletAddr}
       ></EnhancedInput>
-      <button onClick={addWallet}>Authorize</button>
-      <button onClick={removeWallet}>Remove access</button>
+      <div className="btn-actions">
+        <EnhancedButton onClick={addWallet}>Authorize</EnhancedButton>
+        <EnhancedButton onClick={removeWallet}>Remove access</EnhancedButton>
+      </div>
     </StyledAdmin>
   );
 };

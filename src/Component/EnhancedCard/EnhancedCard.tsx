@@ -3,6 +3,7 @@ import styled from "styled-components";
 import React, { ChangeEventHandler } from "react";
 import EnhancedInput from "../EnhancedInput/EnhancedInput";
 import SwitchComponent from "../SwitchComponent/SwitchComponent";
+import EnhancedButton from "../EnhancedButton/EnhancedButton";
 
 const EnhancedCardStyled = styled.div`
   background: #1db235;
@@ -46,7 +47,7 @@ function EnhancedCard(p: Props) {
         onChange={p.handleInputChange}
         placeholder="upstream dns"
       />
-      <button onClick={p.onSumit}>Update</button>
+      <EnhancedButton onClick={p.onSumit}>Update</EnhancedButton>
     </EnhancedCardStyled>
   );
 }

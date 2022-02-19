@@ -7,6 +7,7 @@ import EnhancedInput from "../../Component/EnhancedInput/EnhancedInput";
 import { Web3Provider } from "@ethersproject/providers";
 import LoaderSub from "../../subscribtions/loader/loader";
 import EnhancedButton from "../../Component/EnhancedButton/EnhancedButton";
+import ToastSub from "../../subscribtions/toast/toast";
 function Filters() {
   const provider = useRef<Web3Provider>();
   const [hostlists, setHostLists] = useState<string[]>([]);
@@ -26,7 +27,14 @@ function Filters() {
       process.env.REACT_APP_CONTRACT_ADDRESS ?? "",
       provider.current
     );
-    setHostLists(await Blocklist.getHostList());
+    try {
+      const hl = await Blocklist.getHostList();
+      setHostLists(hl);
+    } catch (error: any) {
+      ToastSub.next(error.message);
+    } finally {
+      LoaderSub.next(false);
+    }
   };
 
   const addHostName = async () => {
@@ -46,7 +54,8 @@ function Filters() {
       await Blocklist.addHostName(newHost);
       LoaderSub.next(false);
       setHostLists([...hostlists, newHost]);
-    } catch (error) {
+    } catch (error: any) {
+      ToastSub.next(error.message);
       LoaderSub.next(false);
       console.log(error);
     }
@@ -71,8 +80,9 @@ function Filters() {
         await Blocklist.removeHostList(index);
         LoaderSub.next(false);
         setHostLists(hostlists.filter((_, i) => i != index));
-      } catch (error) {
+      } catch (error: any) {
         console.log(error);
+        ToastSub.next(error.message);
         LoaderSub.next(false);
       }
     };

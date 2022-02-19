@@ -8,6 +8,7 @@ import { GetAuthTokenRequest } from "../../generated/grpc/protos/getauthtoken/ge
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate, useLocation } from "react-router-dom";
 import LoaderSub from "../../subscribtions/loader/loader";
+import ToastSub from "../../subscribtions/toast/toast";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -30,18 +31,19 @@ export default function SignIn() {
       month: "short",
     })}-${("0" + date.getDate()).slice(-2)}`;
     LoaderSub.next("Waiting for signature");
-    const sig = await signer.signMessage(message);
-    LoaderSub.next(false);
-    const req = new GetAuthTokenRequest();
-    req.setSignature(sig);
-    req.setWalletaddress(await signer.getAddress());
     try {
+      const sig = await signer.signMessage(message);
+      LoaderSub.next(false);
+      const req = new GetAuthTokenRequest();
+      req.setSignature(sig);
+      req.setWalletaddress(await signer.getAddress());
       LoaderSub.next(true);
       const res = await blockerservice.getAuthToken(req, null);
       LoaderSub.next(false);
       setToken(res.getToken());
       navigate(from);
-    } catch (error) {
+    } catch (error: any) {
+      ToastSub.next(error.message as string);
       LoaderSub.next(false);
       console.log("failed to getAuthToken");
       console.log(error);

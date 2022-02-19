@@ -6,6 +6,7 @@ import { Blocker__factory } from "../../generated/smartcontract/types/ethers-con
 import EnhancedInput from "../../Component/EnhancedInput/EnhancedInput";
 import LoaderSub from "../../subscribtions/loader/loader";
 import EnhancedButton from "../../Component/EnhancedButton/EnhancedButton";
+import ToastSub from "../../subscribtions/toast/toast";
 const Admin = () => {
   const provider = useRef<Web3Provider>();
   const [walletAddr, setWalletAddr] = useState("");
@@ -32,8 +33,13 @@ const Admin = () => {
     );
     Blocklist = Blocklist.connect(provider.current.getSigner());
     LoaderSub.next("Waiting for request");
-    await Blocklist.authorizeUser(walletAddr);
-    LoaderSub.next(false);
+    try {
+      await Blocklist.authorizeUser(walletAddr);
+    } catch (error: any) {
+      ToastSub.next(error.message);
+    } finally {
+      LoaderSub.next(false);
+    }
   };
 
   const removeWallet = async () => {
@@ -49,8 +55,13 @@ const Admin = () => {
     );
     Blocklist = Blocklist.connect(provider.current.getSigner());
     LoaderSub.next("Waiting for request");
-    await Blocklist.unAuthorizeUser(walletAddr);
-    LoaderSub.next(false);
+    try {
+      await Blocklist.unAuthorizeUser(walletAddr);
+    } catch (error: any) {
+      ToastSub.next(error.message);
+    } finally {
+      LoaderSub.next(false);
+    }
   };
   return (
     <StyledAdmin>

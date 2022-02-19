@@ -6,6 +6,7 @@ import { AuthProvider } from "./contexts/AuthProvider";
 import Dash from "./pages/dash/Dash";
 import SignIn from "./pages/signin/SignIn";
 import EnhancedLoader from "./Component/EnhancedLoader/EnhancedLoader";
+import EnhancedToast from "./Component/EnhancedToast/EnchancedToast";
 
 function App() {
   useEffect(() => {
@@ -14,6 +15,7 @@ function App() {
   return (
     <AuthProvider>
       <EnhancedLoader />
+      <EnhancedToast />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/dash" replace />} />

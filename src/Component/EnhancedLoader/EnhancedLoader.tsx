@@ -13,11 +13,11 @@ const StyledEnhancedLoader = styled.div`
   align-items: center;
   padding: 0 10px;
   border-radius: 12px;
-  transform: translateY(-100%);
+  transform: translate(-50%, -150%);
   transition: 1s;
 
   &.is-loading {
-    transform: translateY(0);
+    transform: translate(-50%, 0%);
   }
 
   .loader {

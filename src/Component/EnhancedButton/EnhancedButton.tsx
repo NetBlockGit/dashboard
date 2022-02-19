@@ -13,7 +13,7 @@ const EnhancedButtonStyle = styled.button`
 `;
 
 function EnhancedButton(p: PropsWithChildren<any>) {
-  return <EnhancedButtonStyle>{p.children}</EnhancedButtonStyle>;
+  return <EnhancedButtonStyle {...(p ?? "")}>{p.children}</EnhancedButtonStyle>;
 }
 
 export default EnhancedButton;

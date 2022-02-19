@@ -30,7 +30,7 @@ const EnhancedToast = () => {
       setIsActive(true);
       setTimeout(() => {
         setIsActive(false);
-      }, 2000);
+      }, 4000);
     });
   }, []);
   return (

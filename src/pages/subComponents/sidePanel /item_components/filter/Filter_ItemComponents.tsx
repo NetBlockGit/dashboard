@@ -1,7 +1,6 @@
 import React from "react";
 import Style_ItemComponents from "../Style_ItemComponents";
 import { Link } from "react-router-dom";
-import EnhancedButton from "../../../../../Component/EnhancedButton/EnhancedButton";
 
 const Filter_ItemComponnt = () => {
   return (
